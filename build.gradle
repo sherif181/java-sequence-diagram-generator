@@ -1,5 +1,5 @@
 apply plugin: 'java'
-description = "Simple  Latex sequence diagram generator. This project  uses  annotated unit tests to generate stacktraces, which are later  used to generate latex sequence diagrams.rm" 
+description = "Simple latex sequence diagram generator. This project uses annotated junit tests to generate latex sequence diagrams." 
 version = '1.0'
 
  

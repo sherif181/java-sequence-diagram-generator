@@ -21,14 +21,14 @@ public class DiagramBean {
 	private CtMethod entryPoint;
 
 	private ArrayList<CtClass> recordedDiagramClasses = new ArrayList<CtClass>();
-	private ArrayList<CtClass> allDiagramClasses;
+	private ArrayList<CtClass> diagramClasses;
 	private String label;
 
 	public DiagramBean(CtMethod entryPoint, String caption, String fileName,
 			String outputDir, ArrayList<CtClass> dClasses, String label) {
 		this.entryPoint = entryPoint;
 		root = new CalledMethod(entryPoint.getDeclaringClass(), entryPoint);
-		allDiagramClasses = dClasses;
+		diagramClasses = dClasses;
 		this.caption = caption;
 		this.fileName = fileName;
 		this.outputDir = outputDir;
@@ -36,11 +36,19 @@ public class DiagramBean {
 
 	}
 
-	public ArrayList<CtClass> getAllDiagramClasses() {
-		return allDiagramClasses;
+	/**
+	 * 
+	 * @return classes which should be rendered in the sequence diagram
+	 */
+	public ArrayList<CtClass> getDiagramClasses() {
+		return diagramClasses;
 	}
 
-	public ArrayList<CtClass> getRecordedDiagramClasses() {
+	/**
+	 * 
+	 * @return all classes which called the method called method
+	 */
+	public ArrayList<CtClass> getRecordedClasses() {
 		return recordedDiagramClasses;
 	}
 
@@ -81,7 +89,6 @@ public class DiagramBean {
 
 	public void setStopTime(long stopTime) {
 		this.stopTime = stopTime;
-		
 
 	}
 
@@ -102,7 +109,7 @@ public class DiagramBean {
 		if (!recordedDiagramClasses.contains(m.getMethod().getDeclaringClass())) {
 			recordedDiagramClasses.add(m.getMethod().getDeclaringClass());
 		}
-	
+
 		if (lastMethod == null) {
 			root.addChild(m);
 			lastMethod = m;
@@ -115,7 +122,7 @@ public class DiagramBean {
 
 	public void methodReturned() {
 		lastMethod.methodReturned();
-		
+
 		lastMethod = lastMethod.getParrent();
 
 	}

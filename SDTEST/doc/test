@@ -1,12 +1,10 @@
  \begin{figure}
  \begin{center}
  \begin{sequencediagram}
-\newthread{testDiagramStructureTest}{DiagramStructureTest}
+\newthread{testAnnotationTest}{AnnotationTest}
 \newinst{testController}{Controller}
 \newinst{testModel}{Model}
-\newinst{testBean}{Bean}
-\newinst{testPersistor}{Persistor}
-\begin{call}{testDiagramStructureTest}{init}{testController}{void 0ms}
+\begin{call}{testAnnotationTest}{init}{testController}{void 0ms}
 \begin{call}{testController}{newInstance}{testBean}{Bean 0ms}
 \end{call}
 \begin{call}{testController}{setBean}{testModel}{void 0ms}
@@ -16,12 +14,10 @@
 \end{call}
 \end{call}
 \end{call}
-\begin{call}{testDiagramStructureTest}{longBeanOperation}{testController}{void 1.02s}
+\begin{call}{testAnnotationTest}{simpleBeanOperation}{testController}{void 0ms}
 \begin{call}{testController}{getBean}{testModel}{Bean 0ms}
 \end{call}
-\begin{call}{testController}{longBeanOperation}{testBean}{void 1.02s}
-\begin{call}{testBean}{simpleBeanOperation}{testBean}{void 0ms}
-\end{call}
+\begin{call}{testController}{simpleBeanOperation}{testBean}{void 0ms}
 \end{call}
 \begin{call}{testController}{setBean}{testModel}{void 0ms}
 \end{call}
@@ -31,7 +27,7 @@
 \end{call}
 \end{call}
  \end{sequencediagram}
-\caption{test.DiagramStructureTest longBeanOperation}
-\label{test.DiagramStructureTest.longBeanOperation}
+\caption{test.AnnotationTest fileNameTest}
+\label{test.AnnotationTest.fileNameTest}
 \end{center}
 \end{figure}

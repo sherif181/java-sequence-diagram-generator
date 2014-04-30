@@ -35,8 +35,8 @@ public class LatexWriter implements WriterI {
 			write("\\newthread{" + bean.getEntryPoint().getDeclaringClass().getName().replace("$", "").replace(".", "") + "}{"
 					+ bean.getEntryPoint().getDeclaringClass().getSimpleName().replace("$", "-") + "}");
 
-			for (CtClass c : bean.getAllDiagramClasses()) {
-				if(bean.getRecordedDiagramClasses().contains(c)){
+			for (CtClass c : bean.getDiagramClasses()) {
+				if(bean.getRecordedClasses().contains(c)){
 					write("\\newinst{" + c.getName().replace("$", "").replace(".", "") + "}{"
 							+ c.getSimpleName().replace("$", "-") + "}");
 				}

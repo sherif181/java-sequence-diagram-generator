@@ -31,8 +31,8 @@ public class DiagramRecorderTest {
 		assertEquals(DiagramRecorder.currentDiagramBean.getFileName(),fileName);
 
 		assertEquals(DiagramRecorder.currentDiagramBean.getOutputDir(),outputDir);
-		assertEquals(DiagramRecorder.currentDiagramBean.getAllDiagramClasses().size(),1);
-		assertTrue(DiagramRecorder.currentDiagramBean.getAllDiagramClasses().contains(pool.get( sk.anivit.stacktracegen.recording.Test.class.getName())));
+		assertEquals(DiagramRecorder.currentDiagramBean.getDiagramClasses().size(),1);
+		assertTrue(DiagramRecorder.currentDiagramBean.getDiagramClasses().contains(pool.get( sk.anivit.stacktracegen.recording.Test.class.getName())));
 		
 		
 	}

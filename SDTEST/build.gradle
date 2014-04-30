@@ -1,5 +1,4 @@
 apply plugin: 'java'
-description = "Simple  Latex sequence diagram generator. This project  uses  annotated unit tests to generate stacktraces, which are later  used to generate latex sequence diagrams.rm" 
 version = '1.0'
 
  
@@ -16,7 +15,7 @@ repositories {
 dependencies {
  	testCompile "javassist:javassist:3.12.1.GA"
 	testCompile "org.reflections:reflections:0.9.8"
-	testCompile files('../build/libs/java-sequence-diagram-generator-1.0.jar')
+	testCompile files('../build/libs/SDgenerator-1.0.jar')
 	testCompile "junit:junit:4.11"
 	
 }

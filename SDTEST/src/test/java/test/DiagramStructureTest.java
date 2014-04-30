@@ -33,7 +33,7 @@ public class DiagramStructureTest {
 
 	@Test
 	@SequenceDiagram({ Controller.class, Model.class, Bean.class,
-			Persistor.class })
+			Persistor.class }) 
 	public void longBeanOperation() {
 		test = LONG;
 		Controller c = new Controller(new Model());

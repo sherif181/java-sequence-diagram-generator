@@ -11,10 +11,11 @@ import sk.anivit.stacktracegen.annotations.Caption;
 import sk.anivit.stacktracegen.annotations.FileName;
 import sk.anivit.stacktracegen.annotations.Label;
 import sk.anivit.stacktracegen.annotations.OutputDirectory;
+import sk.anivit.stacktracegen.annotations.SequenceDiagram;
 import sk.anivit.stacktracegen.recording.DiagramRecorder;
 
 public class SDInjector {
-	private ArrayList<Class<?>> clsInDiagrams = new ArrayList<Class<?>>();
+	private ArrayList<Class<?>> clsInDiagrams = new ArrayList<Class<?>>();//contains all classes which have been  modified to call the record methods
 	java.util.logging.Logger log = java.util.logging.Logger
 			.getLogger(SDInjector.class.toString());
 
@@ -65,11 +66,15 @@ public class SDInjector {
 			log.info("outDir: " + outDir);
 			log.info("Entry method " + entryPointName);
 			log.info("caption: " + caption);
-
+			ArrayList<Class<?>>diagramsToRender =new ArrayList<Class<?>>();
+			
+			for (Class<?> c :((SequenceDiagram)m.getAnnotation(SequenceDiagram.class)).value()) {
+				diagramsToRender.add(c);
+			}
 			m.insertBefore(DiagramRecorder.class.getName()
 					+ ".startRecording(\"" + entryPointName + "\",\"" + caption
 					+ "\",\"" + fileName + "\",\"" + outDir + "\",\""
-					+ clsInDiagrams + "\",\"" + label + "\");");
+					+ diagramsToRender + "\",\"" + label + "\");");
 			m.insertAfter(DiagramRecorder.class.getName() + ".stopRecording();");
 
 		} catch (ClassNotFoundException e) {
