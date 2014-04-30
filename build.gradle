@@ -1,0 +1,33 @@
+apply plugin: 'java'
+description = "Simple  Latex sequence diagram generator. This project  uses  annotated unit tests to generate stacktraces, which are later  used to generate latex sequence diagrams.rm" 
+version = '1.0'
+
+ 
+repositories {
+    mavenCentral()
+   	maven {
+        url "http://repo1.maven.org/maven2/"
+    }
+   
+}
+jar{
+	manifest {
+		attributes 'Main-Class': 'sk.anivit.stacktracegen.SDGeneratorMain','Agent-Class': 'sk.anivit.stacktracegen.InjectorAgent'
+	}
+}
+
+
+dependencies {
+    compile  "javassist:javassist:3.12.1.GA"
+	compile "junit:junit:4.11"
+	compile "org.reflections:reflections:0.9.8"
+	
+	runtime "javassist:javassist:3.12.1.GA"
+	runtime "org.reflections:reflections:0.9.8"
+	runtime "junit:junit:4.11"
+	//test ''
+	
+}
+
+
+

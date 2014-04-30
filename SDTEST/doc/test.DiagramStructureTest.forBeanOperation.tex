@@ -1,0 +1,35 @@
+ \begin{figure}
+ \begin{center}
+ \begin{sequencediagram}
+\newthread{testDiagramStructureTest}{DiagramStructureTest}
+\newinst{testController}{Controller}
+\newinst{testModel}{Model}
+\newinst{testBean}{Bean}
+\newinst{testPersistor}{Persistor}
+\begin{call}{testDiagramStructureTest}{init}{testController}{void 0ms}
+\begin{call}{testController}{newInstance}{testBean}{Bean 0ms}
+\end{call}
+\begin{call}{testController}{setBean}{testModel}{void 0ms}
+\end{call}
+\begin{call}{testController}{persist}{testModel}{boolean 0ms}
+\begin{call}{testModel}{persist}{testPersistor}{void 0ms}
+\end{call}
+\end{call}
+\end{call}
+\begin{call}{testDiagramStructureTest}{forBeanOperation}{testController}{void 0ms}
+\begin{call}{testController}{getBean}{testModel}{Bean 0ms}
+\end{call}
+\begin{call}{testController}{forBeanOperation}{testBean}{void 0ms}
+\begin{sdblock}{Loop/multiple}{}
+\begin{call}{testBean}{simpleBeanOperation}{testBean}{void 0ms}
+\end{call}
+\end{sdblock}
+\end{call}
+\begin{call}{testController}{setBean}{testModel}{void 0ms}
+\end{call}
+\end{call}
+ \end{sequencediagram}
+\caption{test.DiagramStructureTest forBeanOperation}
+\label{test.DiagramStructureTest.forBeanOperation}
+\end{center}
+\end{figure}

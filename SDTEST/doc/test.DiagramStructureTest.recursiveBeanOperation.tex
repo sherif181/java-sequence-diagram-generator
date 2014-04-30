@@ -1,0 +1,47 @@
+ \begin{figure}
+ \begin{center}
+ \begin{sequencediagram}
+\newthread{testDiagramStructureTest}{DiagramStructureTest}
+\newinst{testController}{Controller}
+\newinst{testModel}{Model}
+\newinst{testBean}{Bean}
+\newinst{testPersistor}{Persistor}
+\begin{call}{testDiagramStructureTest}{init}{testController}{void 1ms}
+\begin{call}{testController}{newInstance}{testBean}{Bean 1ms}
+\end{call}
+\begin{call}{testController}{setBean}{testModel}{void 0ms}
+\end{call}
+\begin{call}{testController}{persist}{testModel}{boolean 0ms}
+\begin{call}{testModel}{persist}{testPersistor}{void 0ms}
+\end{call}
+\end{call}
+\end{call}
+\begin{call}{testDiagramStructureTest}{recursiveBeanOperation}{testController}{void 1ms}
+\begin{call}{testController}{getBean}{testModel}{Bean 0ms}
+\end{call}
+\begin{call}{testController}{recursiveBeanOperation}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 1ms}
+\begin{call}{testBean}{recurse}{testBean}{void 0ms}
+\end{call}
+\end{call}
+\end{call}
+\end{call}
+\end{call}
+\end{call}
+\end{call}
+\begin{call}{testController}{setBean}{testModel}{void 0ms}
+\end{call}
+\begin{call}{testController}{persist}{testModel}{boolean 0ms}
+\begin{call}{testModel}{persist}{testPersistor}{void 0ms}
+\end{call}
+\end{call}
+\end{call}
+ \end{sequencediagram}
+\caption{test.DiagramStructureTest recursiveBeanOperation}
+\label{test.DiagramStructureTest.recursiveBeanOperation}
+\end{center}
+\end{figure}
