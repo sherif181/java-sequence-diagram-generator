@@ -15,7 +15,7 @@ repositories {
 dependencies {
  	testCompile "javassist:javassist:3.12.1.GA"
 	testCompile "org.reflections:reflections:0.9.8"
-	testCompile files('../build/libs/SDgenerator-1.0.jar')
+	testCompile files('../build/libs/java-sequence-diagram-generator-1.0.jar')
 	testCompile "junit:junit:4.11"
 	
 }
