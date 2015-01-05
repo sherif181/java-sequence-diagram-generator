@@ -19,7 +19,16 @@ public class DiagramStructureTest {
 	private static final int RECURSIVE = 1;
 	private static final int FOR = 2;
 	private static final int LONG = 3;
+	private static final int ABSTRACT = 4;
 	private int test;
+
+	
+	@Test
+	@SequenceDiagram({ AbstractSuperClass.class })
+	public void abstractSuperClassTest() {
+		test = ABSTRACT;
+		new RealSubClass().sub();
+	}
 
 	@Test
 	@SequenceDiagram({ Controller.class, Model.class, Bean.class,
