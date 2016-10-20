@@ -18,13 +18,13 @@ jar{
 
 
 dependencies {
-    compile  "javassist:javassist:3.12.1.GA"
-	compile "junit:junit:4.11"
-	compile "org.reflections:reflections:0.9.8"
+    compile "org.javassist:javassist:3.18.1-GA"
+	compile "org.reflections:reflections:0.9.10"
+	compile "junit:junit:4.12"
 	
-	runtime "javassist:javassist:3.12.1.GA"
-	runtime "org.reflections:reflections:0.9.8"
-	runtime "junit:junit:4.11"
+	runtime "org.javassist:javassist:3.18.1-GA"
+	runtime "org.reflections:reflections:0.9.10"
+	runtime "junit:junit:4.12"
 	//test ''
 	
 }

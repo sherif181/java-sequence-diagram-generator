@@ -1,5 +1,6 @@
 package sk.anivit.stacktracegen;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import org.junit.runner.JUnitCore;
@@ -17,7 +18,7 @@ import javassist.Translator;
 
 public class SDGeneratorMain {
 	public static void main(String[] args) throws Throwable {
-		final ArrayList<String> al = new ArrayList<String>();
+		final ArrayList<String> classnames = new ArrayList<String>();
 		final ClassPool pool = ClassPool.getDefault();
 		ClassFinder.findClasses(new Visitor<String>() {
 
@@ -29,7 +30,7 @@ public class SDGeneratorMain {
 					CtClass c = pool.get(t);
 					for (CtMethod m : c.getMethods()) {
 						if (m.hasAnnotation(SequenceDiagram.class)) {
-							al.add(t);
+							classnames.add(t);
 							System.out.println("Generating diagram for "+t);
 							break;
 						}
@@ -45,9 +46,21 @@ public class SDGeneratorMain {
 
 		Loader loader = new Loader();
 		loader.addTranslator(pool, xlat);
+		
+		Class<?>[] classes = new Class[classnames.size()];
+		for (int i = 0; i < classnames.size(); i++) {
+			classes[i] = loader.loadClass(classnames.get(i));
+		}
 
-		loader.run(JUnitCore.class.getName(),
-				(String[]) al.toArray(new String[al.size()]));
+		Class<?> jucore = loader.loadClass(JUnitCore.class.getName());
+
+		Object[] param = { classes };
+
+		Method runClasses = jucore.getMethod("runClasses", classes.getClass());
+		runClasses.invoke(null, param);
+
+//		loader.run(JUnitCore.class.getName(),
+//				(String[]) al.toArray(new String[al.size()]));
 
 	}
 }
